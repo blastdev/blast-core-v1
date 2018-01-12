@@ -539,8 +539,8 @@ UniValue getblocktemplate(const UniValue& params, bool fHelp)
     if (vNodes.empty())
         throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "BLAST is not connected!");
 
-    if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "BLAST is downloading blocks...");
+/*    if (IsInitialBlockDownload())
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "BLAST is downloading blocks...");*/
 
     static unsigned int nTransactionsUpdatedLast;
 
@@ -1033,9 +1033,9 @@ UniValue getauxblock(const UniValue& params, bool fHelp)
         throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED,
                            "BLAST is not connected!");
 
-    if (IsInitialBlockDownload() && !Params().MineBlocksOnDemand())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD,
-                           "BLAST is downloading blocks...");
+    // if (IsInitialBlockDownload() && !Params().MineBlocksOnDemand())
+    //     throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD,
+    //                        "BLAST is downloading blocks...");
     
 
     /* The variables below are used to keep track of created and not yet
