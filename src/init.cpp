@@ -392,7 +392,6 @@ std::string HelpMessage(HelpMessageMode mode)
 
 #ifdef ENABLE_WALLET
     strUsage += CWallet::GetWalletHelpString(showDebug);
-    strUsage += HelpMessageOpt("-createwalletbackups=<n>", _("Number of automatic wallet backups (default: 10)"));
 #endif
 
 #if ENABLE_ZMQ
@@ -491,7 +490,7 @@ std::string HelpMessage(HelpMessageMode mode)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://githubs.com/blastdev/blast-core>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/blastdev/blast-core>";
     const std::string URL_WEBSITE = "<https://blastblastblast.com>";
     // todo: remove urls from translations on next change
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2017, COPYRIGHT_YEAR) + " ") + "\n" +
@@ -1183,7 +1182,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
         }
         if (!CWallet::Verify())
             return false;
-    }  // (!fDisableWallet)
+    } // (!fDisableWallet)
 #endif // ENABLE_WALLET
     // ********************************************************* Step 6: network initialization
 
