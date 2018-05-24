@@ -112,7 +112,7 @@ public:
         // printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
         // printf("genesis.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         // printf("genesis.nNonce = %u\n", genesis.nNonce);
-        assert(consensus.hashGenesisBlock == uint256S("0x00000000a6a47e28b4fea2ab47262d9a420bb1600dee375cad30fa54c9f6ec90"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000000000000000000000000000000000000000000001013f40050ac40402e8"));
         assert(genesis.hashMerkleRoot == uint256S("0xccc9ed60efe7224e7ea404369d246390d1b8f09f33268dcb6d66f3c5707232ae"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
@@ -146,9 +146,10 @@ public:
             (      0, uint256S("0x00000000a6a47e28b4fea2ab47262d9a420bb1600dee375cad30fa54c9f6ec90"))
             (  88238, uint256S("0x0000000000012ed053d9c1f2221803df06f57c982b264c9f6289cd5db88404d2"))
             ( 136700, uint256S("0x9f5833e664b0d283ef89ca8e6cf2a1ca0355199475da2f29679e11e07733ef19"))
-            ( 289999, uint256S("0xcffbc77ecbf3c6b208405192d70acf600dff4adaaf985785d9a366b2595032d1")),
-            1522489130, // * UNIX timestamp of last checkpoint block
-            300546,     // * total number of transactions between genesis and last checkpoint
+            ( 289999, uint256S("0xcffbc77ecbf3c6b208405192d70acf600dff4adaaf985785d9a366b2595032d1"))
+            ( 429998, uint256S("0x0000000000000211e981e385f0bb709b6793deed2dfd06ca2597f06f6020b90d")),
+            1527198213, // * UNIX timestamp of last checkpoint block
+            450331,     // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             2700.0      // * estimated number of transactions per day after checkpoint
         };
