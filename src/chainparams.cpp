@@ -112,7 +112,7 @@ public:
         // printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
         // printf("genesis.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         // printf("genesis.nNonce = %u\n", genesis.nNonce);
-        assert(consensus.hashGenesisBlock == uint256S("0x0000000000000000000000000000000000000000000001013f40050ac40402e8"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00000000a6a47e28b4fea2ab47262d9a420bb1600dee375cad30fa54c9f6ec90"));
         assert(genesis.hashMerkleRoot == uint256S("0xccc9ed60efe7224e7ea404369d246390d1b8f09f33268dcb6d66f3c5707232ae"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
