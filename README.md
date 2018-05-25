@@ -1,4 +1,4 @@
 BLAST Core
 ============
 
-http://blastblastblast.com
+https://cryptoblast.io

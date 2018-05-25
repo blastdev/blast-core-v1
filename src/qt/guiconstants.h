@@ -49,7 +49,7 @@ static const int MAX_URI_LENGTH = 255;
 #define SPINNER_FRAMES 36
 
 #define QAPP_ORG_NAME "BLAST"
-#define QAPP_ORG_DOMAIN "blastblastblast.com"
+#define QAPP_ORG_DOMAIN "cryptoblast.io"
 #define QAPP_APP_NAME_DEFAULT "BLAST-Qt"
 #define QAPP_APP_NAME_TESTNET "BLAST-Qt-testnet"
 
