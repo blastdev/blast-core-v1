@@ -64,6 +64,7 @@ struct Params {
     uint256 nMinimumChainWork;
     // BLAST: Auxpow chain ID parameter
     int32_t nAuxpowChainId;
+    bool fStrictChainId;
 };
 } // namespace Consensus
 

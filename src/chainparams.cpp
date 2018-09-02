@@ -72,6 +72,7 @@ public:
         consensus.nPowTargetTimespan = 32 * 60; // 32 min
         consensus.nPowTargetSpacing = 32;  // 32 sec
         consensus.nAuxpowChainId = 0x1940; // Auxpow Chain ID = 6464
+        consensus.fStrictChainId = true;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 54; // 95% of 60
@@ -169,11 +170,12 @@ public:
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x00000000a6a47e28b4fea2ab47262d9a420bb1600dee375cad30fa54c9f6ec90"); // Genesis hash (height 0)
+        consensus.BIP34Hash = uint256S("0x0000000029d359a20d5c40a5af1002da87f2e62babcae762a8d90d048b66875c"); // Genesis hash (height 0)
         consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 32;
         consensus.nPowTargetTimespan = 32 * 60; // 32 min
         consensus.nPowTargetSpacing = 32;  // 32 sec
-        consensus.nAuxpowChainId = 0x1940; // Auxpow Chain ID = 6464
+        consensus.nAuxpowChainId = 0x00A4; // Auxpow Chain ID = 164
+        consensus.fStrictChainId = false;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 54; // 95% of 60
@@ -185,12 +187,12 @@ public:
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1512550966; // December 6th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1519146928; // February 20th, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1546300799; // Decemeber 31, 2018
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1512550966; // December 6th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1519146928; // February 20th, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1546300799; // Decemeber 31, 2018
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
@@ -202,12 +204,12 @@ public:
         nDefaultPort = 64320;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1512550966, 476339731, 0x1d00ffff, 1, 1 * COIN);
+        genesis = CreateGenesisBlock(1530524391, 2843693039, 0x1d00ffff, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         // printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
         // printf("genesis.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         // printf("genesis.nNonce = %u\n", genesis.nNonce);
-        assert(consensus.hashGenesisBlock == uint256S("0x00000000a6a47e28b4fea2ab47262d9a420bb1600dee375cad30fa54c9f6ec90"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000000029d359a20d5c40a5af1002da87f2e62babcae762a8d90d048b66875c"));
         assert(genesis.hashMerkleRoot == uint256S("0xccc9ed60efe7224e7ea404369d246390d1b8f09f33268dcb6d66f3c5707232ae"));
 
         vFixedSeeds.clear();
@@ -232,8 +234,8 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0x00000000a6a47e28b4fea2ab47262d9a420bb1600dee375cad30fa54c9f6ec90")),
-            1512550966,
+            ( 0, uint256S("0x0000000029d359a20d5c40a5af1002da87f2e62babcae762a8d90d048b66875c")),
+            1530524391,
             0,
             1
         };

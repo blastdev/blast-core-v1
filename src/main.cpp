@@ -1681,7 +1681,7 @@ bool CheckProofOfWork(const CBlockHeader& block, const Consensus::Params& params
 
         return true;
     }
-    if (!block.IsLegacy() && block.GetChainId() != params.nAuxpowChainId)
+    if (!block.IsLegacy() && params.fStrictChainId && block.GetChainId() != params.nAuxpowChainId)
         return error("%s : block does not have our chain ID"
                      " (got %d, expected %d, full nVersion %d)",
                      __func__, block.GetChainId(),
@@ -1941,7 +1941,8 @@ void Misbehaving(NodeId pnode, int howmuch)
 }
 
 void static InvalidChainFound(CBlockIndex* pindexNew)
-{
+{   
+if (pindexNew->nHeight > 0) {
     if (!pindexBestInvalid || pindexNew->nChainWork > pindexBestInvalid->nChainWork)
         pindexBestInvalid = pindexNew;
 
@@ -1955,6 +1956,7 @@ void static InvalidChainFound(CBlockIndex* pindexNew)
       tip->GetBlockHash().ToString(), chainActive.Height(), log(tip->nChainWork.getdouble())/log(2.0),
       DateTimeStrFormat("%Y-%m-%d %H:%M:%S", tip->GetBlockTime()));
     CheckForkWarningConditions();
+}
 }
 
 void static InvalidBlockFound(CBlockIndex *pindex, const CValidationState &state) {
