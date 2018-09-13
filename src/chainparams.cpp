@@ -72,11 +72,14 @@ public:
         consensus.nPowTargetTimespan = 32 * 60; // 32 min
         consensus.nPowTargetSpacing = 32;  // 32 sec
         consensus.nAuxpowChainId = 0x1940; // Auxpow Chain ID = 6464
-        consensus.fStrictChainId = true;
+        consensus.nAlternateChainId = 0x00A4; // Auxpow Chain ID = 164
+        consensus.nChainIdUpgradeHeight = 764000; // Switch to Chain ID 164 after block 764000
+        consensus.fStrictChainId = false;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 54; // 95% of 60
         consensus.nMinerConfirmationWindow = 60; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nBlockV4UpgradeHeight = 470000; // Miners produce v4 blocks after height 470000
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -174,12 +177,15 @@ public:
         consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 32;
         consensus.nPowTargetTimespan = 32 * 60; // 32 min
         consensus.nPowTargetSpacing = 32;  // 32 sec
-        consensus.nAuxpowChainId = 0x00A4; // Auxpow Chain ID = 164
+        consensus.nAuxpowChainId = 0x1940; // Auxpow Chain ID = 6464
+        consensus.nAlternateChainId = 0x00A4; // Auxpow Chain ID = 164
+        consensus.nChainIdUpgradeHeight = 30; // Switch to Chain ID 164 after block 0
         consensus.fStrictChainId = false;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 54; // 95% of 60
         consensus.nMinerConfirmationWindow = 60; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nBlockV4UpgradeHeight = 20; // Miners produce v4 blocks after height 470000
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -187,12 +193,12 @@ public:
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1512550966; // December 6th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1546300799; // Decemeber 31, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1546300799; // December 31, 2018
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1512550966; // December 6th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1546300799; // Decemeber 31, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1546300799; // December 31, 2018
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
@@ -261,10 +267,14 @@ public:
         consensus.nPowTargetTimespan = 30 * 60; // 30 min
         consensus.nPowTargetSpacing = 30;  // 30 sec
         consensus.nAuxpowChainId = 0x1940; // Auxpow Chain ID = 6464
+        consensus.nAlternateChainId = 0x00A4; // Auxpow Chain ID = 164
+        consensus.nChainIdUpgradeHeight = 0; // Switch to Chain ID 164 after block 0
+        consensus.fStrictChainId = false;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 45; // 75% for testchains
         consensus.nMinerConfirmationWindow = 60; // Faster than normal for regtest (144 instead of 2016)
+        consensus.nBlockV4UpgradeHeight = 470000; // Miners produce v4 blocks after height 470000
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 999999999999ULL;
