@@ -73,7 +73,7 @@ public:
         consensus.nPowTargetSpacing = 32;  // 32 sec
         consensus.nAuxpowChainId = 0x1940; // Auxpow Chain ID = 6464
         consensus.nAlternateChainId = 0x00A4; // Auxpow Chain ID = 164
-        consensus.nChainIdUpgradeHeight = 764000; // Switch to Chain ID 164 after block 764000
+        consensus.nChainIdUpgradeHeight = 796000; // Switch to Chain ID 164 after block 796000
         consensus.fStrictChainId = false;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
@@ -95,7 +95,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1519146928; // February 20th, 2018
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000001013f40050ac40402e8");  // Height 429998
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000007bcf1a7820259035581");  // Height 741975
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -151,9 +151,11 @@ public:
             (  88238, uint256S("0x0000000000012ed053d9c1f2221803df06f57c982b264c9f6289cd5db88404d2"))
             ( 136700, uint256S("0x9f5833e664b0d283ef89ca8e6cf2a1ca0355199475da2f29679e11e07733ef19"))
             ( 289999, uint256S("0xcffbc77ecbf3c6b208405192d70acf600dff4adaaf985785d9a366b2595032d1"))
-            ( 429998, uint256S("0x0000000000000211e981e385f0bb709b6793deed2dfd06ca2597f06f6020b90d")),
-            1527198213, // * UNIX timestamp of last checkpoint block
-            450331,     // * total number of transactions between genesis and last checkpoint
+            ( 429998, uint256S("0x0000000000000211e981e385f0bb709b6793deed2dfd06ca2597f06f6020b90d"))
+            ( 470001, uint256S("0x0000000000000091e9201aac0d7de4644d840f77343a383abcbfe4cdb143d00c"))
+            ( 741975, uint256S("0xc0e8ef621936909064f627478d7031adda683bbcd7477cffd8eca571cf868c32")),
+            1538172088, // * UNIX timestamp of last checkpoint block
+            768047,     // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             2700.0      // * estimated number of transactions per day after checkpoint
         };
@@ -179,13 +181,13 @@ public:
         consensus.nPowTargetSpacing = 32;  // 32 sec
         consensus.nAuxpowChainId = 0x1940; // Auxpow Chain ID = 6464
         consensus.nAlternateChainId = 0x00A4; // Auxpow Chain ID = 164
-        consensus.nChainIdUpgradeHeight = 30; // Switch to Chain ID 164 after block 0
+        consensus.nChainIdUpgradeHeight = 30; // Switch to Chain ID 164 after block 30
         consensus.fStrictChainId = false;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 54; // 95% of 60
         consensus.nMinerConfirmationWindow = 60; // nPowTargetTimespan / nPowTargetSpacing
-        consensus.nBlockV4UpgradeHeight = 20; // Miners produce v4 blocks after height 470000
+        consensus.nBlockV4UpgradeHeight = 20; // Miners produce v4 blocks after height 20
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
