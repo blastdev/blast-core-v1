@@ -1942,7 +1942,6 @@ void Misbehaving(NodeId pnode, int howmuch)
 
 void static InvalidChainFound(CBlockIndex* pindexNew)
 {   
-if (pindexNew->nHeight > 0) {
     if (!pindexBestInvalid || pindexNew->nChainWork > pindexBestInvalid->nChainWork)
         pindexBestInvalid = pindexNew;
 
@@ -1956,7 +1955,6 @@ if (pindexNew->nHeight > 0) {
       tip->GetBlockHash().ToString(), chainActive.Height(), log(tip->nChainWork.getdouble())/log(2.0),
       DateTimeStrFormat("%Y-%m-%d %H:%M:%S", tip->GetBlockTime()));
     CheckForkWarningConditions();
-}
 }
 
 void static InvalidBlockFound(CBlockIndex *pindex, const CValidationState &state) {
