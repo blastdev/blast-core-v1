@@ -142,14 +142,15 @@ CBlockTemplate* BlockAssembler::CreateNewBlock(const CScript& scriptPubKeyIn)
     nHeight = pindexPrev->nHeight + 1;
 
     // BLAST
-    const int32_t nChainId = chainparams.GetConsensus ().nAuxpowChainId;
+    const int32_t nChainId = chainparams.GetConsensus().nAuxpowChainId;
+    const int32_t nnChainId = (nHeight > chainparams.GetConsensus().nChainIdUpgradeHeight) ? chainparams.GetConsensus().nAlternateChainId : nChainId;
     const int32_t nVersion = ComputeBlockVersion(pindexPrev, chainparams.GetConsensus());
-    uint32_t nnVersion = (nHeight > 470000) ? 4 : nVersion;
-    pblock->SetBaseVersion(nnVersion, nChainId);
+    const uint32_t nnVersion = (nHeight > chainparams.GetConsensus().nBlockV4UpgradeHeight) ? 4 : nVersion;
+    pblock->SetBaseVersion(nnVersion, nnChainId);
     // -regtest only: allow overriding block.nVersion with
     // -blockversion=N to test forking scenarios
     if (chainparams.MineBlocksOnDemand())
-        pblock->SetBaseVersion(GetArg("-blockversion", pblock->GetBaseVersion()), nChainId);
+        pblock->SetBaseVersion(GetArg("-blockversion", pblock->GetBaseVersion()), nnChainId);
 
     pblock->nTime = GetAdjustedTime();
     const int64_t nMedianTimePast = pindexPrev->GetMedianTimePast();

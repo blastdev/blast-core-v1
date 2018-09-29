@@ -64,6 +64,12 @@ struct Params {
     uint256 nMinimumChainWork;
     // BLAST: Auxpow chain ID parameter
     int32_t nAuxpowChainId;
+    int32_t nAlternateChainId;
+    int nChainIdUpgradeHeight;
+    bool fStrictChainId;
+
+    // BLAST: Block v4 Upgrade Height
+    int nBlockV4UpgradeHeight;
 };
 } // namespace Consensus
 

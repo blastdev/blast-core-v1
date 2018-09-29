@@ -1681,7 +1681,7 @@ bool CheckProofOfWork(const CBlockHeader& block, const Consensus::Params& params
 
         return true;
     }
-    if (!block.IsLegacy() && block.GetChainId() != params.nAuxpowChainId)
+    if (!block.IsLegacy() && params.fStrictChainId && block.GetChainId() != params.nAuxpowChainId)
         return error("%s : block does not have our chain ID"
                      " (got %d, expected %d, full nVersion %d)",
                      __func__, block.GetChainId(),

@@ -72,10 +72,14 @@ public:
         consensus.nPowTargetTimespan = 32 * 60; // 32 min
         consensus.nPowTargetSpacing = 32;  // 32 sec
         consensus.nAuxpowChainId = 0x1940; // Auxpow Chain ID = 6464
+        consensus.nAlternateChainId = 0x00A4; // Auxpow Chain ID = 164
+        consensus.nChainIdUpgradeHeight = 796000; // Switch to Chain ID 164 after block 796000
+        consensus.fStrictChainId = false;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 54; // 95% of 60
         consensus.nMinerConfirmationWindow = 60; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nBlockV4UpgradeHeight = 470000; // Miners produce v4 blocks after height 470000
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -91,7 +95,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1519146928; // February 20th, 2018
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000001013f40050ac40402e8");  // Height 429998
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000007bcf1a7820259035581");  // Height 741975
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -147,9 +151,11 @@ public:
             (  88238, uint256S("0x0000000000012ed053d9c1f2221803df06f57c982b264c9f6289cd5db88404d2"))
             ( 136700, uint256S("0x9f5833e664b0d283ef89ca8e6cf2a1ca0355199475da2f29679e11e07733ef19"))
             ( 289999, uint256S("0xcffbc77ecbf3c6b208405192d70acf600dff4adaaf985785d9a366b2595032d1"))
-            ( 429998, uint256S("0x0000000000000211e981e385f0bb709b6793deed2dfd06ca2597f06f6020b90d")),
-            1527198213, // * UNIX timestamp of last checkpoint block
-            450331,     // * total number of transactions between genesis and last checkpoint
+            ( 429998, uint256S("0x0000000000000211e981e385f0bb709b6793deed2dfd06ca2597f06f6020b90d"))
+            ( 470001, uint256S("0x0000000000000091e9201aac0d7de4644d840f77343a383abcbfe4cdb143d00c"))
+            ( 741975, uint256S("0xc0e8ef621936909064f627478d7031adda683bbcd7477cffd8eca571cf868c32")),
+            1538172088, // * UNIX timestamp of last checkpoint block
+            768047,     // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             2700.0      // * estimated number of transactions per day after checkpoint
         };
@@ -169,15 +175,19 @@ public:
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x00000000a6a47e28b4fea2ab47262d9a420bb1600dee375cad30fa54c9f6ec90"); // Genesis hash (height 0)
+        consensus.BIP34Hash = uint256S("0x000000001d03315ec89ac7895ad122e3ae9c3c92a2ec5f63000794cdd6c18095"); // Genesis hash (height 0)
         consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 32;
         consensus.nPowTargetTimespan = 32 * 60; // 32 min
         consensus.nPowTargetSpacing = 32;  // 32 sec
         consensus.nAuxpowChainId = 0x1940; // Auxpow Chain ID = 6464
+        consensus.nAlternateChainId = 0x00A4; // Auxpow Chain ID = 164
+        consensus.nChainIdUpgradeHeight = 30; // Switch to Chain ID 164 after block 30
+        consensus.fStrictChainId = false;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 54; // 95% of 60
         consensus.nMinerConfirmationWindow = 60; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nBlockV4UpgradeHeight = 20; // Miners produce v4 blocks after height 20
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -185,12 +195,12 @@ public:
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1512550966; // December 6th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1519146928; // February 20th, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1546300799; // December 31, 2018
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1512550966; // December 6th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1519146928; // February 20th, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1546300799; // December 31, 2018
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
@@ -202,12 +212,12 @@ public:
         nDefaultPort = 64320;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1512550966, 476339731, 0x1d00ffff, 1, 1 * COIN);
+        genesis = CreateGenesisBlock(1536875774, 1514596784, 0x1d00ffff, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         // printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
         // printf("genesis.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         // printf("genesis.nNonce = %u\n", genesis.nNonce);
-        assert(consensus.hashGenesisBlock == uint256S("0x00000000a6a47e28b4fea2ab47262d9a420bb1600dee375cad30fa54c9f6ec90"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000000001d03315ec89ac7895ad122e3ae9c3c92a2ec5f63000794cdd6c18095"));
         assert(genesis.hashMerkleRoot == uint256S("0xccc9ed60efe7224e7ea404369d246390d1b8f09f33268dcb6d66f3c5707232ae"));
 
         vFixedSeeds.clear();
@@ -232,8 +242,8 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0x00000000a6a47e28b4fea2ab47262d9a420bb1600dee375cad30fa54c9f6ec90")),
-            1512550966,
+            ( 0, uint256S("0x000000001d03315ec89ac7895ad122e3ae9c3c92a2ec5f63000794cdd6c18095")),
+            1536875774,
             0,
             1
         };
@@ -259,10 +269,14 @@ public:
         consensus.nPowTargetTimespan = 30 * 60; // 30 min
         consensus.nPowTargetSpacing = 30;  // 30 sec
         consensus.nAuxpowChainId = 0x1940; // Auxpow Chain ID = 6464
+        consensus.nAlternateChainId = 0x00A4; // Auxpow Chain ID = 164
+        consensus.nChainIdUpgradeHeight = 0; // Switch to Chain ID 164 after block 0
+        consensus.fStrictChainId = false;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 45; // 75% for testchains
         consensus.nMinerConfirmationWindow = 60; // Faster than normal for regtest (144 instead of 2016)
+        consensus.nBlockV4UpgradeHeight = 470000; // Miners produce v4 blocks after height 470000
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 999999999999ULL;
