@@ -1941,7 +1941,7 @@ void Misbehaving(NodeId pnode, int howmuch)
 }
 
 void static InvalidChainFound(CBlockIndex* pindexNew)
-{   
+{
     if (!pindexBestInvalid || pindexNew->nChainWork > pindexBestInvalid->nChainWork)
         pindexBestInvalid = pindexNew;
 
